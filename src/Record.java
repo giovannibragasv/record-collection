@@ -15,17 +15,44 @@ abstract class Record implements Media {
     }
 
     public abstract String getFormat();
+
     public abstract double getDurabilityRating();
 
-    public int getId() { return id; }
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-    public Artist getArtist() { return artist; }
-    public void setArtist(Artist artist) { this.artist = artist; }
-    public int getReleaseYear() { return releaseYear; }
-    public void setReleaseYear(int releaseYear) { this.releaseYear = releaseYear; }
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {

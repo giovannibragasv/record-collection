@@ -33,6 +33,11 @@ class CDRecord extends Record {
         return "Manter em estojo, longe de riscos e luz solar direta";
     }
 
-    public boolean isRemastered() { return isRemastered; }
-    public String getEdition() { return edition; }
+    public boolean isRemastered() {
+        return isRemastered;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
 }

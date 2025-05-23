@@ -33,6 +33,11 @@ class DigitalRecord extends Record {
         return "Fazer backup regular em múltiplas mídias";
     }
 
-    public String getAudioQuality() { return audioQuality; }
-    public double getFileSizeMB() { return fileSizeMB; }
+    public String getAudioQuality() {
+        return audioQuality;
+    }
+
+    public double getFileSizeMB() {
+        return fileSizeMB;
+    }
 }

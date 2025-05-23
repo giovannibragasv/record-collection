@@ -11,10 +11,21 @@ class Artist {
         this.foundationYear = foundationYear;
     }
 
-    public String getName() { return name; }
-    public String getGenre() { return genre; }
-    public String getCountry() { return country; }
-    public int getFoundationYear() { return foundationYear; }
+    public String getName() {
+        return name;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public int getFoundationYear() {
+        return foundationYear;
+    }
 
     @Override
     public String toString() {

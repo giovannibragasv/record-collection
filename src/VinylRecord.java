@@ -33,6 +33,11 @@ class VinylRecord extends Record {
         return "Armazenar verticalmente, longe de calor e umidade";
     }
 
-    public String getRpm() { return rpm; }
-    public String getSize() { return size; }
+    public String getRpm() {
+        return rpm;
+    }
+
+    public String getSize() {
+        return size;
+    }
 }

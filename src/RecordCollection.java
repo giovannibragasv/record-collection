@@ -121,9 +121,15 @@ class RecordCollection {
             totalValue += record.getPrice();
 
             switch (record.getFormat()) {
-                case "Vinil": vinylCount++; break;
-                case "CD": cdCount++; break;
-                case "Digital": digitalCount++; break;
+                case "Vinil":
+                    vinylCount++;
+                    break;
+                case "CD":
+                    cdCount++;
+                    break;
+                case "Digital":
+                    digitalCount++;
+                    break;
             }
         }
 
