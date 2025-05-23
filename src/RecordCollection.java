@@ -5,7 +5,7 @@ import java.util.List;
 public class RecordCollection {
     private List<Record> records;
 
-    public RecordCollection(String collectionName) {
+    public RecordCollection() {
         this.records = new ArrayList<>();
     }
 
