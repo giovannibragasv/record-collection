@@ -1,8 +1,7 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecordCollection {
+class RecordCollection {
     private List<Record> records;
 
     public RecordCollection() {
@@ -11,7 +10,7 @@ public class RecordCollection {
 
     public void addRecord(Record record) {
         this.records.add(record);
-        System.out.println("Disco " + record.getTitle() + " adicionado com sucesso.");
+        System.out.println("Disco " + record.getTitle() + " (" + record.getFormat() + ") adicionado com sucesso.");
     }
 
     public boolean removeRecord(int id) {
@@ -27,33 +26,72 @@ public class RecordCollection {
     }
 
     public List<Record> getByTitle(String title) {
-        List<Record> records = new ArrayList<>();
+        List<Record> foundRecords = new ArrayList<>();
         for (Record record : this.records) {
-            if (record.getTitle().equals(title)) {
-                records.add(record);
+            if (record.getTitle().equalsIgnoreCase(title)) {
+                foundRecords.add(record);
             }
         }
-        return records;
+        return foundRecords;
     }
 
-    public List<Record> getByArtist(String artist) {
-        List<Record> records = new ArrayList<>();
+    public List<Record> getByArtist(String artistName) {
+        List<Record> foundRecords = new ArrayList<>();
         for (Record record : this.records) {
-            if (record.getArtist().equals(artist)) {
-                records.add(record);
+            if (record.getArtist().getName().equalsIgnoreCase(artistName)) {
+                foundRecords.add(record);
             }
         }
-        return records;
+        return foundRecords;
     }
 
     public List<Record> getByFormat(String format) {
-        List<Record> records = new ArrayList<>();
+        List<Record> foundRecords = new ArrayList<>();
         for (Record record : this.records) {
-            if (record.getFormat().equals(format)) {
-                records.add(record);
+            if (record.getFormat().equalsIgnoreCase(format)) {
+                foundRecords.add(record);
             }
         }
-        return records;
+        return foundRecords;
+    }
+
+    public void printShippingCosts() {
+        System.out.println("\n=== CUSTOS DE ENVIO ===");
+        double totalShippingCost = 0;
+
+        for (Record record : this.records) {
+            double cost = record.calculateShippingCost();
+            totalShippingCost += cost;
+
+            System.out.printf("%s - %s: R$ %.2f%n",
+                    record.getTitle(), record.getFormat(), cost);
+        }
+
+        System.out.printf("Custo total de envio: R$ %.2f%n", totalShippingCost);
+    }
+
+    public void printStorageRecommendations() {
+        System.out.println("\n=== RECOMENDAÇÕES DE ARMAZENAMENTO ===");
+
+        for (Record record : this.records) {
+            System.out.println(record.getFormat() + " - " + record.getTitle() + ":");
+            System.out.println("  " + record.getStorageRecommendation());
+            System.out.println();
+        }
+    }
+
+    public void printDurabilityAnalysis() {
+        System.out.println("\n=== ANÁLISE DE DURABILIDADE ===");
+
+        for (Record record : this.records) {
+            double rating = record.getDurabilityRating();
+            String category = rating >= 9.0 ? "Excelente" :
+                    rating >= 8.0 ? "Muito Boa" :
+                            rating >= 7.0 ? "Boa" : "Regular";
+
+            System.out.printf("%s (%s): %.1f/10 - %s%n",
+                    record.getTitle(), record.getFormat(), rating, category);
+        }
     }
 
     public void printRecords() {
@@ -62,26 +100,39 @@ public class RecordCollection {
             return;
         }
 
+        System.out.println("\n=== COLEÇÃO DE DISCOS ===");
         for (Record record : this.records) {
             System.out.println(record);
         }
     }
 
     public void printStatistics() {
+        System.out.println("\n=== ESTATÍSTICAS DA COLEÇÃO ===");
         System.out.println("Total de discos: " + this.records.size());
 
         if (this.records.isEmpty()) {
-            System.out.println("Nenhum disco encontrado.");
             return;
         }
 
         double totalValue = 0;
+        int vinylCount = 0, cdCount = 0, digitalCount = 0;
+
         for (Record record : this.records) {
             totalValue += record.getPrice();
+
+            switch (record.getFormat()) {
+                case "Vinil": vinylCount++; break;
+                case "CD": cdCount++; break;
+                case "Digital": digitalCount++; break;
+            }
         }
 
-        System.out.println("Valor total da coleção: " + String.format("%.2f", totalValue));
-        System.out.println("Valor médio por disco: " + String.format("%.2f", totalValue / records.size()));
+        System.out.printf("Valor total da coleção: R$ %.2f%n", totalValue);
+        System.out.printf("Valor médio por disco: R$ %.2f%n", totalValue / records.size());
+        System.out.println("Distribuição por formato:");
+        System.out.println("  Vinil: " + vinylCount);
+        System.out.println("  CD: " + cdCount);
+        System.out.println("  Digital: " + digitalCount);
     }
 
     public List<Record> getRecords() {

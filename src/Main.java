@@ -1,4 +1,3 @@
-import java.sql.Date;
 import java.util.List;
 
 public class Main {
@@ -10,13 +9,13 @@ public class Main {
         Artist radiohead = new Artist("Alternative Rock", "United Kingdom", 1985, "Radiohead");
         Artist carSeatHeadrest = new Artist("Indie Rock", "United States of America", 2010, "Car Seat Headrest");
 
-        Record r1 = new Record("Meddle", pinkFloyd, 1971, "Vinyl", 530.00);
-        Record r2 = new Record("Ummagumma", pinkFloyd, 1969, "Vinyl", 330.00);
-        Record r3 = new Record("Abbey Road", beatles, 1969, "Vinyl", 270.00);
-        Record r4 = new Record("A Moon Shaped Pool", radiohead, 2016, "Vinyl", 330.00);
-        Record r5 = new Record("Kid A", radiohead, 2000, "Vinyl", 340.00);
-        Record r6 = new Record("In Rainbows", radiohead, 2007, "Vinyl", 350.00);
-        Record r7 = new Record("Twin Fantasy", carSeatHeadrest, 2018, "Vinyl", 300.00);
+        Record r1 = new VinylRecord("Meddle", pinkFloyd, 1971, 530.00, "33⅓", "12\"");
+        Record r2 = new VinylRecord("Ummagumma", pinkFloyd, 1969, 330.00, "33⅓", "12\"");
+        Record r3 = new CDRecord("Abbey Road", beatles, 1969, 270.00, true, "Deluxe");
+        Record r4 = new CDRecord("A Moon Shaped Pool", radiohead, 2016, 330.00, false, "Standard");
+        Record r5 = new DigitalRecord("Kid A", radiohead, 2000, 340.00, "FLAC", 450.5);
+        Record r6 = new CDRecord("In Rainbows", radiohead, 2007, 350.00, true, "Special Edition");
+        Record r7 = new DigitalRecord("Twin Fantasy", carSeatHeadrest, 2018, 300.00, "MP3 320kbps", 125.8);
 
         newCollection.addRecord(r1);
         newCollection.addRecord(r2);
@@ -26,20 +25,26 @@ public class Main {
         newCollection.addRecord(r6);
         newCollection.addRecord(r7);
 
-        System.out.println("\n");
         newCollection.printRecords();
         newCollection.printStatistics();
 
-        System.out.println("\n");
-        List<Record> beatlesRecords = newCollection.getByArtist("Pink Floyd");
-        for (Record record : beatlesRecords) {
-            System.out.println(record);
+        newCollection.printShippingCosts();
+
+        newCollection.printStorageRecommendations();
+
+        newCollection.printDurabilityAnalysis();
+
+        System.out.println("\n=== BUSCA POR FORMATO ===");
+        List<Record> vinylRecords = newCollection.getByFormat("Vinil");
+        System.out.println("Discos de vinil encontrados:");
+        for (Record record : vinylRecords) {
+            System.out.println("  " + record);
         }
 
-        System.out.println("\n");
+        System.out.println("\n=== TESTE DE REMOÇÃO ===");
         newCollection.removeRecord(3);
 
-        System.out.println("\n");
+        System.out.println("\n=== COLEÇÃO ATUALIZADA ===");
         newCollection.printRecords();
         newCollection.printStatistics();
     }

@@ -1,52 +1,31 @@
-import java.util.Date;
-
-public class Artist {
+class Artist {
     private String name;
     private String genre;
     private String country;
-    private int formationDate;
+    private int foundationYear;
 
-    public Artist(String genre, String country, int formationDate, String name) {
+    public Artist(String genre, String country, int foundationYear, String name) {
+        this.name = name;
         this.genre = genre;
         this.country = country;
-        this.formationDate = formationDate;
-        this.name = name;
+        this.foundationYear = foundationYear;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public int getFormationDate() {
-        return formationDate;
-    }
-
-    public void setFormationDate(int formationDate) {
-        this.formationDate = formationDate;
-    }
+    public String getName() { return name; }
+    public String getGenre() { return genre; }
+    public String getCountry() { return country; }
+    public int getFoundationYear() { return foundationYear; }
 
     @Override
     public String toString() {
-        return "Artista: " + name + ", " + "País: " + country + ", " + "Data de Formação: " + formationDate;
+        return name + " (" + genre + ", " + country + ")";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Artist artist = (Artist) obj;
+        return name.equals(artist.name);
     }
 }
