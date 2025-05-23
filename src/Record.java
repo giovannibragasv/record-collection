@@ -7,7 +7,7 @@ public class Record {
     private String format;
     private double price;
 
-    public Record(int id, String title, Artist artist, int releaseYear, String format, double price) {
+    public Record(String title, Artist artist, int releaseYear, String format, double price) {
         this.id = autoincrement++;
         this.title = title;
         this.artist = artist;

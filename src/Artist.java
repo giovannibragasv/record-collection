@@ -4,9 +4,9 @@ public class Artist {
     private String name;
     private String genre;
     private String country;
-    private Date formationDate;
+    private int formationDate;
 
-    public Artist(String genre, String country, Date formationDate, String name) {
+    public Artist(String genre, String country, int formationDate, String name) {
         this.genre = genre;
         this.country = country;
         this.formationDate = formationDate;
@@ -37,11 +37,11 @@ public class Artist {
         this.country = country;
     }
 
-    public Date getFormationDate() {
+    public int getFormationDate() {
         return formationDate;
     }
 
-    public void setFormationDate(Date formationDate) {
+    public void setFormationDate(int formationDate) {
         this.formationDate = formationDate;
     }
 
